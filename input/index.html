@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        h2 {
+            font-size: 24px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 250px;
+            padding: 6px;
+            margin-top: 4px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            padding: 6px 14px;
+            cursor: pointer;
+        }
+        #informasi {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Form Input</h2>
+    <form action="input.php" onsubmit="return validateForm()" method="post">
+        <label for="kecamatan">Kecamatan:</label>
+        <input type="text" id="kecamatan" name="kecamatan">
+
+        <label for="longitude">Longitude:</label>
+        <input type="text" id="longitude" name="longitude">
+
+        <label for="latitude">Latitude:</label>
+        <input type="text" id="latitude" name="latitude">
+
+        <label for="luas">Luas:</label>
+        <input type="text" id="luas" name="luas">
+
+        <label for="jumlah_penduduk">Jumlah Penduduk:</label>
+        <input type="text" id="jumlah_penduduk" name="jumlah_penduduk">
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <p id="informasi"></p>
+
+    <script>
+        function validateForm() {
+            let luas = document.getElementById("luas").value.trim();
+            let info = document.getElementById("informasi");
+
+            if (luas === "" || isNaN(luas) || luas <= 0) {
+                info.textContent = "Data Luas harus berupa angka dan tidak boleh bernilai negatif atau kosong.";
+                return false;
+            }
+
+            info.textContent = "";
+            return true;
+        }
+    </script>
+</body>
+</html>
